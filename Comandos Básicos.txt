@@ -1,0 +1,24 @@
+O docker possui uma variedade de comandos úteis para gerenciar containers, imagens, volumes, redes e outros aspectos da sua infraestrutura
+de containerizacao. Aqui estao alguns dos comandos mais comuns e úteis do Docker.
+
+Comandos de Básicos:
+1. docker version: Exibe a versao do coker instalada.
+2. docker info: Exibe informacoes detalhadas sobre a instalacao do docker, incluindo conteineres, imagens, volumes, etc.
+
+Comandos de Imagens:
+1. docker pull [imagem]: Baixa uma imagem do docker Hub ou de um registro privado.
+2. docker images: Lista todas as imagens locais.
+3. docker rmi [imagem]: Remove uma ou mais imagnes locais.
+4. docker build -t [nome]:[tag] [caminho]: Constrói uma imagem a partir de um dockerFile
+
+Comando de conteineres:
+1. docker run [opcoes] [imagem]: Cria e inicia um novo container a partir de uma imagem.
+ * Exemplo: docker run -d -p 80:80 nginx (Inicia um container em modo desanexado rodando o servidor web Nginx e mapeia a porta 80 do host para a porta 80 do container).
+2. docker ps: Lista todos os containers em execucao.
+3. docker ps -a: Lista todos os containers em execucao, inclusive os que estao parados.
+4. docker stop [container_id]: Para um container em execucao.
+5. docker start [container_id]: Inicia um containe parado.
+6. docker restart [container_id]: Reinicia um container.
+7. docker rm [container_id]: Remove um container parado.
+8. docker exec -it [container_id] [comando]: Executa um comando dentro ed um container em execucao.
+    * Exemplo docker exec -it my_container /bin/bash (Abre um terminal bash interativo dentro do container).
