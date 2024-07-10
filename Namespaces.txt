@@ -1,0 +1,17 @@
+Os containers garantem o isolamento entre si através de várias tecnologias e mecanismos fornecidos pelo kernel do sistema operacional.
+Os principais sao:
+
+Namespaces:
+Namespaces sao uma caracteristica do kernel do linux que isola e virtualiza os recursos do ssitema para um processo específico. Existem vários tipos de namespaces,
+cada um responsavel por isolar diferentes aspectos do sistema:
+
+1. PID Namespace: Isola a árvore de processos, o que significa que os processos dentro de um container nao podem ver ou interagir com os processos de fora dele.
+2. Network Namespace: Isola interfaces de rede, IPs, portas e roteamento, permitindo que cada container tenha sua própia pilha de rede.
+3. Mount Namespace: Isola sistemas de arquivos montados, permitindo que cada container tenha seu próprio sistema de arquivos independente.
+4. UTS Namespace: Isola o nome do host e o domínio, permitindo que cada container tenha seu proprio hostname.
+5. IPC Namespace: Isola recursos de comunicacao entre processos, como filas de mensagens e semáforos.
+6. User Namespace: Isola IDs de usuário e grupo, permitindo que os IDs dentro de um container sejam diferentes dos IDs no host, aumentando a seguranca.
+
+Control Groups (cgroups)
+Cgroups sao uma funcionalidade do kernel do Linux que limita, contabiliza e isola o uso de recursos (CPU, memória, I/O, etc.) para um conjunto de processos.
+Com cgroups, é possível garantir que um container nao consuma todos os recursos e afete outros containers.
