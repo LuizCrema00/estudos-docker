@@ -1,0 +1,21 @@
+Containers e máquinas virtuais (VMs) sao tecnologias usadas para isolar aplicacoes e ambientes de executacao, mas elas operam de maneiras bastante diferentes.
+
+Containers:
+1. Arquitetura: Containers compartilham o kernel do sistema operacional do host e sao mais leves. Cada Container roda como um processo isolado no host.
+2. Isolamento: Containers fornecem isolamento de processo, mas compartilham o kernel com o host, o que resulta em um overhead menor.
+3. Inicio e parada: Containers geralmente iniciam e param muito rapidamente, em segundos.
+4. Uso de recursos: Containers sao mais eficientes no uso de recursos, pois nao precisam de um sistema operacional completo para cada instancia.
+5. Imagens: Containers usam imagens que contem tudo o que é necessario para rodar uma aplicacao, incluindo código, runtime, bibliotecas e dependencias.
+6. Portabilidade: Containers sao altamente portateis e podem ser facilmente movidos entre diferentes ambientes(desenvolvimento, teste, producao) com consistencia.
+
+Maquinas virtuais(VMs):
+1. Arquitetura: VMs rodam em um hypervisor e cada VM inclui seu proprio sistema operacional completo, além do software necessario para rodar as aplicacoes.
+2. Isolamento: VMs oferecem isolamento completo do sistema operacional, o que podem proporcionar maior seguranca, mas com um overhead maior.
+3. Inicio e parada: VMs geralmente demoram mais para iniciar e parar, pois precisam carregar um sistema operacional completo.
+4. Uso de recursos: VMs sao mais pesadas, pois cada uma inclui um sistema operacional completo, o que leva a um maior consumo de recursos.
+5. Imagens: VMs usam imagens de disco que contem o sistema operacional, drivers, aplicacoes e dados.
+6. Portabilidade: VMs sao portateis, mas podem ser mais dificeis de mover entre diferentes hypervisores ou ambientes devido ao tamanho e complexidade.
+
+Containers sao ideais para aplicacoes que precisam ser distribuídas de maneira consistente e eficiente, enquanto máquinas virtuais sao melhores para
+cenários onde é necedssario um isolamento completo do sistema operacional.
+
