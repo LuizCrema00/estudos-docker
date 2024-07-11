@@ -1,0 +1,58 @@
+Imagens Docker sao templates imútaveis e somente leitura que contem todos os elementos necessarios para rodar um container.
+Elas sao a base para a criacao de containeirs e sao compostas por camadas que representam as alteracoes feitas ao longo do tempo.
+
+Conceitos fundamentais
+1. Template imutável: Uma imagem docker é um template imutável que inclui tudo o que é necessario para executar um aplicativo:
+código, bibliotecas, dependencias, ferramentas de sistema, e configuracoes.
+2. Camadas de imagens: As imagens docker sao compostas por camadas. Cada camada representa uma instrucao no Dockerfile (como RUN, COPY, ADD, etc).
+Quando voce cria uma nova imagem, o docker aproveita as camadas de imagens existentes sempre que possivel, o que torna o processo eficiente em termos de armazenamento.
+3. Somente leitura: As imagens sao somente leitura. Quando um container é iniciado a partir de uma imagem, o docker aproveita as camadas de imagens existentes sempre que
+possível, o que torna o processo eficiente em termos de armazenamento.
+
+Para criar uma imagem docker, normalmente usa-se um Dockerfile, que é um script contendo uma série de instrucoes que o docker executa para construir a imagem.
+
+Exemplo de um Dockerfile simples:
+# Use uma imagem base do Node.js
+FROM node:14
+
+# Defina o diretório de trabalho no container
+WORKDIR /app-node
+
+# Defina um argumento de construção e uma variável de ambiente
+ARG PORT_BUILD=6000
+ENV PORT=$PORT_BUILD
+
+# Exponha a porta definida pelo argumento de construção
+EXPOSE $PORT_BUILD
+
+# Copie todos os arquivos do projeto para o diretório de trabalho no container
+COPY . .
+
+# Instale as dependências do projeto
+RUN npm install
+
+# Defina o comando de entrada para iniciar a aplicação
+ENTRYPOINT ["npm", "start"]
+
+Construir a imagem docker
+Para construir a imagem Docker a partir do Dockerfile, devemos estar no diretório que contém o Dockerfile e executar o comando.
+
+docker build -t minha-imagem .
+    * -t minha-imagem: Especifica a tag (nome) para a imagem construída.
+    * .: Indica que o contexto de construção é o diretório atual.
+
+Rodar ao container
+Para rodar um container a partir de uma imagem construída, devemos usar o comando docker run e mapear a porta definida no Dockerfile para uma porta no host
+
+docker run -p 8081:6000 -d minha-imagem
+    * -p 8081:6000: Mapeia a porta 8081 no host para a porta 6000 no container.
+    * -d: Executa o container em modo desanexado (em background).
+    * minha-imagem: O nome da imagem que você quer rodar.
+
+Subindo uma imagem para o dockerhub
+Para subir uma imagem Docker para o Docker Hub, precisamos seguir uma série de passos que incluem criar uma conta no Docker Hub, fazer login no Docker Hub através do terminal,
+taguear a imagem corretamente, e finalmente fazer o (push) para o repositório no docker hub.
+
+
+
+
