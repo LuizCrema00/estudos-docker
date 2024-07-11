@@ -1,0 +1,13 @@
+Volumes no docker sao uma forma de armazenar dados gerados e utilizados por containers de forma persistente. Eles permitem que os dados
+sobrevivam a reinicializacao ou remocao dos containers e podem ser compartilhados entre vários containers.
+
+Por que usar volumes?
+1. Persistencia de dados: Dados armazenados em volumes nao sao removidos automaticamente quando um container é excluído.
+2. Compartilhamento de dados: Volumes podem ser montados em vários containers simultaneamente, permitindo que compartilhem dados.
+3. Gestao simples de Dados: Volumes podem ser gerenciados diretamente através de comandos Docker, e sao a forma recomendada de persistir dados no Docker.
+4. Desempenho: Volumes geralmente oferecem melhor desempenho comparado a montagens de diretórios locais.
+
+Tipos de Volumes
+1. Volumes nomeados: Criados e gerenciados pelo docker. Sao armazenados em uma localizacao específica no host (geralmente em /var/lib/docker/volumes/ no Linux).
+2. Bind Mounts: Mapeiam um diretório ou arquivo específico no sitema de arquivos do host para o container. Sao úteis para desenvolvimento,
+onde voce deseja refletir mudancas em tempo real.
