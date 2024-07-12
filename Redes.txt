@@ -1,0 +1,19 @@
+Redes no docker sao fundamentais para permitir que containers se comuniquem entre si e com outros servicos externos. O docker oferece várias
+opcoes de rede que podem ser configuradas para atender diferentes necessidades, desde simples redes isoladas até redes complexas que conectam
+containers em diferentes hosts.
+
+Tipos de redes no docker
+1. Bridge(Ponte): 
+ * É o tipo de rede padrao para containers no docker
+ * Containers conectados a rede bridge podem se comunicar entre si usando IPs internos
+ * Ideal para ambientes de desenvolvimento e situacoes onde voce precida de uma rede privada de containers.
+
+2. host
+ * Containers usam a pilha de rede do host.
+ * Nao há isolamento de rede entre o container e o host, o que pode ser útil para melhorar o desempenho ou quando o container precisa
+ acessar diretamente servicos no host.
+
+3. None:
+ * Containers nao tem acesso a nenhuma rede.
+ * útil para criar containers completamente isolados.
+ 
