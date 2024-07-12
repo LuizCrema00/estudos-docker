@@ -1,0 +1,48 @@
+O docker-compose.yml e o comando docker-compose up sao componentes fundamentais do docker compose, uma ferramenta para definir e gerenciar 
+ambientes multi-container Docker.
+
+docker-compose.yml:
+O arquivo docker-compose.yml é um arquivo no formato YAML que define os servicos, redes e volumes para o seu ambiente Docker. Ele permite que voce
+configure e inicie múltiplos containers de uma maeira simples e declarativa. Aqui está um exemplo básico de um arquivo docker-compose.yml 
+
+version: "3.9"
+services:
+  mongodb:
+    image: mongo:4.4.6
+    container_name: meu-mongo
+    networks:
+      - compose-bridge
+  
+  alurabooks:
+    image: aluradocker/alura-books:1.0
+    container_name: alurabooks
+    networks:
+      - compose-bridge
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongodb
+
+networks:
+  compose-bridge:
+    driver: bridge
+
+version: Define a versão do Docker Compose a ser usada. A versão 3.9 é uma das mais recentes e inclui várias melhorias e novos recursos em comparação com as versões anteriores.
+services: define os containers que serão gerenciados pelo Docker Compose.
+image: A imagem Docker a ser usada para o container. 
+container_name: Nome específico para o container. Isso facilita a identificação do container no Docker.
+Networks: Define as redes nas quais o container estará conectado. Aqui está conectando à rede compose-bridge.
+
+
+Como executar: Para iniciar os servicos definidos no docker-compose.yml, usamos o comando 
+docker-compose up
+
+Este comando irá:
+    - Construir e iniciar os container conforme definido no arquivo docker-compose.yml  
+    - Conectar os container a rede 'compose-bridge'
+    - Mapear as portas conforme especificado
+
+Para parar e remover os containers, usamos: 
+docker-compose down
+
+Ester arquivo docker-compose.yml simplifica a gestao dos containers e garante que todos os servicos necessarios sejam iniciados e configurados corretamente com um único comando.
